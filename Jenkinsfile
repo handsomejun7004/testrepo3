@@ -36,8 +36,6 @@ FROM skawk7004/junhoimage:v1
 ADD server.xml /usr/local/tomcat/conf/server.xml
 ADD redis-data-cache.properties /usr/local/tomcat/conf/redis-data-cache.properties
 ADD index.jsp /usr/local/tomcat/webapps/ROOT/index.jsp
-ADD db.jsp /usr/local/tomcat/webapps/ROOT/db.jsp
-ADD session.jsp /usr/local/tomcat/webapps/ROOT/session.jsp
 WORKDIR /usr/local/tomcat/bin
 CMD ["./catalina.sh", "run"]
 EOF
@@ -52,7 +50,7 @@ EOF
             steps {
               script {
                 docker.withRegistry("https://${ECR_PATH}", "ecr:ap-northeast-2:aws_token") {
-                    def image = docker.build("${ECR_PATH}/${ECR_IMAGE}:${env.BUILD_NUMBER}")
+                    def image = docker.build("${ECR_PATH}/${ECR_IMAGE}:event${env.BUILD_NUMBER}")
                         image.push()
                 }
 
