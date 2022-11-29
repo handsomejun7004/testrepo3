@@ -15,7 +15,7 @@ pipeline {
                     try {
                         git branch: 'main',
                             credentialsId: '84f16736-af9c-447b-9251-996f3ee43b0a',
-                            url: 'https://github.com/handsomejun7004/testrepo'
+                            url: 'https://github.com/handsomejun7004/testrepo3'
                         sh "ls -lat"
                         pwd
                         env.cloneResult=true
